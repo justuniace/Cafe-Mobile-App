@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../components/colors.dart';
 
 class MyOpeningScreen extends StatefulWidget {
@@ -17,7 +16,7 @@ class _MyOpeningScreenState extends State<MyOpeningScreen> {
       child: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
+            gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
@@ -25,12 +24,12 @@ class _MyOpeningScreenState extends State<MyOpeningScreen> {
               AppColor.lightBrownColor,
             ],
           )),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            
-            children: [
-              Lottie.asset('assets/coffee_animation.json'),
-            ],
+          child: Center(
+            child: Lottie.asset(
+              'assets/coffee_animation.json',
+              width: 175,
+              repeat: false
+            ),
           ),
         ),
       ),

@@ -1,20 +1,20 @@
-import 'package:coffee_app/pages/screen/opening.dart';
+
+import 'package:coffee_app/screens/cart/cart.dart';
+import 'package:coffee_app/screens/favorite/favorite.dart';
+import 'package:coffee_app/screens/home/home.dart';
+import 'package:coffee_app/screens/profile/profile.dart';
+import 'package:coffee_app/screens/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'CupFé',
-      debugShowCheckedModeBanner: false,
-      home: MyOpeningScreen(),
-    );
-  }
-}
+void main() => runApp(MaterialApp(
+  title: 'CupFé',
+  debugShowCheckedModeBanner: false,
+  initialRoute: 'welcome',
+  routes: {
+    '/welcome': (context) => const Welcome(),
+    '/': (context) => const Home(),
+    '/favorite': (context) => const Favorite(),
+    '/cart': (context) => const Cart(),
+    '/profile': (context) => const Profile(),
+  },
+));
