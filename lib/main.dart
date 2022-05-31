@@ -1,5 +1,3 @@
-import 'package:coffee_app/components/colors.dart';
-import 'package:coffee_app/provider/animationLoading.dart';
 import 'package:coffee_app/screens/cart/cart.dart';
 import 'package:coffee_app/screens/favorite/favorite.dart';
 import 'package:coffee_app/screens/home/home.dart';
@@ -13,7 +11,7 @@ import 'package:provider/provider.dart';
 void main() => runApp(MaterialApp(
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/welcome',
+      initialRoute: '/login',
       routes: {
         '/welcome': (context) => const Welcome(),
         '/login': (context) => const Login(),
