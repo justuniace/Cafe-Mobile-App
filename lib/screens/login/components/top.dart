@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/colors.dart';
+import '../../../components/colors.dart';
 
 class Top extends StatelessWidget {
   const Top({Key? key, required this.imgPath}) : super(key: key);

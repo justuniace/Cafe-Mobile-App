@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'bottom.dart';
-import 'top.dart';
+import 'components/bottom.dart';
+import 'components/top.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
           child: Stack(
             children: const [
               Top(
-                imgPath: 'assets/coffee_beans.png',
+                imgPath: 'assets/images/login-register/coffee_beans.png',
               ),
               Bottom(
                 Padding(
