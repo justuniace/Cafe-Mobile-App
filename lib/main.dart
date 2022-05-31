@@ -1,3 +1,5 @@
+import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/provider/animationLoading.dart';
 import 'package:coffee_app/screens/cart/cart.dart';
 import 'package:coffee_app/screens/favorite/favorite.dart';
 import 'package:coffee_app/screens/home/home.dart';
@@ -6,11 +8,12 @@ import 'package:coffee_app/screens/profile/profile.dart';
 import 'package:coffee_app/screens/register/register.dart';
 import 'package:coffee_app/screens/welcome/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MaterialApp(
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/welcome',
       routes: {
         '/welcome': (context) => const Welcome(),
         '/login': (context) => const Login(),
