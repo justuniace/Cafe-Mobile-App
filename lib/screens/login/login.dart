@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
           child: Stack(
             children: const [
               Top(
-                imgPath: 'assets/coffee_beans.png',
+                imgPath: 'images/coffee_beans.png',
               ),
               Bottom(
                 Padding(
