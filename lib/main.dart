@@ -27,7 +27,7 @@ void main() => runApp(
       ),
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/welcome',
+      initialRoute: '/login',
       routes: {
         '/welcome': (context) => const Welcome(),
         '/login': (context) => const Login(),
