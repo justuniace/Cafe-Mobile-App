@@ -1,14 +1,14 @@
 import 'package:coffee_app/components/colors.dart';
 import 'package:flutter/material.dart';
 
-class LoginComponent extends StatefulWidget {
-  const LoginComponent({ Key? key }) : super(key: key);
+class RegisterComponent extends StatefulWidget {
+  const RegisterComponent ({ Key? key }) : super(key: key);
 
   @override
-  State<LoginComponent> createState() => _LoginComponentState();
+  State<RegisterComponent> createState() => _RegisterComponentState();
 }
 
-class _LoginComponentState extends State<LoginComponent> {
+class _RegisterComponentState extends State<RegisterComponent>  {
 
   final emailController = TextEditingController();
   String password = '';
@@ -32,7 +32,7 @@ class _LoginComponentState extends State<LoginComponent> {
             hintText: 'Enter your email',
             hintStyle: TextStyle(color: Colors.brown[200], fontSize: 15),
             filled: true,
-            fillColor: AppColor.lightBrownColor,
+            fillColor: AppColor.lightColor,
             prefixIcon: Icon(Icons.mail_rounded, color: AppColor.darkLightColor, size: 20,),
             suffixIcon: emailController.text.isEmpty ?
             Container(width: 0) : 
@@ -61,7 +61,7 @@ class _LoginComponentState extends State<LoginComponent> {
             hintText: 'Enter your password',
             hintStyle: TextStyle(color: Colors.brown[200], fontSize: 15),
             filled: true,
-            fillColor: AppColor.lightBrownColor,
+            fillColor: AppColor.lightColor,
             prefixIcon: Icon(Icons.lock_rounded, color: AppColor.darkLightColor, size: 20,),
             suffixIcon: IconButton(
               icon: isPasswordVisible ? 
@@ -93,13 +93,13 @@ class _LoginComponentState extends State<LoginComponent> {
                 IconButton(
                   padding: EdgeInsets.all(0),
                   alignment: Alignment.centerLeft,
-                  color: AppColor.lightBrownColor,
+                  color: AppColor.darkLightColor,
                   onPressed: () {}, 
                   iconSize: 35,
                   icon: Icon(Icons.account_circle_rounded),
                 ),
                 IconButton(
-                  color: AppColor.lightBrownColor,
+                  color: AppColor.darkLightColor,
                   onPressed: () {},
                   iconSize: 35,
                   icon: Icon(Icons.account_circle_rounded),
@@ -112,15 +112,15 @@ class _LoginComponentState extends State<LoginComponent> {
                   horizontal: 30,
                   vertical: 19
                 )),
-                backgroundColor: MaterialStateProperty.all(AppColor.lightBrownColor)
+                backgroundColor: MaterialStateProperty.all(AppColor.darkLightColor)
               ),
               onPressed: () {
                 Navigator.pushNamed(context, '/');
               }, 
               child: Text(
-                "Login",
+                "Register",
                 style: TextStyle(
-                  color: AppColor.darkLightColor
+                  color: AppColor.lightBrownColor
                 ),
               )
             )
@@ -129,28 +129,28 @@ class _LoginComponentState extends State<LoginComponent> {
 
         SizedBox(height: 50),
 
-        const Divider(
+        Divider(
           height: 20,
           thickness: 1,
-          color: AppColor.darkLightColor,
+          color: Colors.brown[300],
         ),
 
         Text(
-          "Doesn't have an account yet?",
+          "Already have an account?",
           style: TextStyle(
-            color: AppColor.lightBrownColor,
+            color: AppColor.darkLightColor,
             fontSize: 13
           ),
         ),
 
         TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/register');
+            Navigator.pushNamed(context, '/login');
           }, 
           child: Text(
-            'Register',
+            'Login',
             style: TextStyle(
-              color: AppColor.lightBrownColor,
+              color: AppColor.darkLightColor,
               fontSize: 13
             ),
           )

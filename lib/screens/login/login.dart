@@ -1,6 +1,4 @@
 import 'package:coffee_app/components/colors.dart';
-import 'package:coffee_app/components/input_field.dart';
-import 'package:coffee_app/components/textField_container.dart';
 import 'package:coffee_app/screens/login/components.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_app/components/boxLogin-register.dart';
