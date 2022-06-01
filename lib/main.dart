@@ -5,6 +5,7 @@ import 'package:coffee_app/screens/cart/cart.dart';
 import 'package:coffee_app/screens/favorite/favorite.dart';
 import 'package:coffee_app/screens/home/home.dart';
 import 'package:coffee_app/screens/login/login.dart';
+import 'package:coffee_app/screens/main/mainPage.dart';
 import 'package:coffee_app/screens/profile/profile.dart';
 import 'package:coffee_app/screens/register/register.dart';
 import 'package:coffee_app/screens/welcome/welcome.dart';
@@ -23,19 +24,20 @@ void main() => runApp(
             fontSize: 18.0,
             color: AppColor.darkLightColor
           ),
-        )
+          button: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Montserrat'
+          )
+        ),
       ),
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/',
       routes: {
+        '/': (context) => const MainPage(),
         '/welcome': (context) => const Welcome(),
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),
-        '/': (context) => const Home(),
-        '/favorite': (context) => const Favorite(),
-        '/cart': (context) => const Cart(),
-        '/profile': (context) => const Profile(),
       },
     ),
   )
