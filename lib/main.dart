@@ -24,7 +24,7 @@ void main() => runApp(ChangeNotifierProvider(
         ),
         title: 'CupFé',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+        initialRoute: '/login',
         routes: {
           '/': (context) => const MainPage(),
           '/welcome': (context) => const Welcome(),
