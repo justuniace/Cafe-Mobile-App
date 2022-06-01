@@ -1,5 +1,8 @@
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/models/userModel.dart';
+import 'package:coffee_app/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginComponent extends StatefulWidget {
   const LoginComponent({ Key? key }) : super(key: key);
@@ -9,6 +12,8 @@ class LoginComponent extends StatefulWidget {
 }
 
 class _LoginComponentState extends State<LoginComponent> {
+
+  final AuthService _auth = AuthService();
 
   final emailController = TextEditingController();
   String password = '';
@@ -23,6 +28,9 @@ class _LoginComponentState extends State<LoginComponent> {
 
   @override
   Widget build(BuildContext context) {
+
+    final user = Provider.of<UserModel?>(context);
+
     return  Column(
       children: [
         TextField(
@@ -100,7 +108,12 @@ class _LoginComponentState extends State<LoginComponent> {
                 ),
                 IconButton(
                   color: AppColor.lightBrownColor,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _auth.signInAnonymously();
+                    if(user != null){
+                      Navigator.pushNamed(context, '/');
+                    }
+                  },
                   iconSize: 35,
                   icon: Icon(Icons.account_circle_rounded),
                 ),

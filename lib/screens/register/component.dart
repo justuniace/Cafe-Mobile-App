@@ -29,6 +29,29 @@ class _RegisterComponentState extends State<RegisterComponent>  {
           controller: emailController,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(),
+            hintText: 'Enter your username',
+            hintStyle: TextStyle(color: Colors.brown[200], fontSize: 15),
+            filled: true,
+            fillColor: AppColor.lightColor,
+            prefixIcon: Icon(Icons.person_rounded, color: AppColor.darkLightColor, size: 20,),
+            border: OutlineInputBorder(),
+            contentPadding: EdgeInsets.all(20)
+          ),
+          style: TextStyle(
+            color: AppColor.darkLightColor,
+            fontSize: 15
+          ),
+          cursorColor: AppColor.darkLightColor,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.done,
+        ),
+
+        SizedBox(height: 20),
+
+        TextField(
+          controller: emailController,
+          decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(),
             hintText: 'Enter your email',
             hintStyle: TextStyle(color: Colors.brown[200], fontSize: 15),
             filled: true,
