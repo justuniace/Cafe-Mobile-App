@@ -1,6 +1,9 @@
+import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/components/input_field.dart';
+import 'package:coffee_app/components/textField_container.dart';
 import 'package:flutter/material.dart';
-import 'components/bottom.dart';
-import 'components/top.dart';
+import 'package:coffee_app/components/boxLogin-register.dart';
+import 'package:coffee_app/components/boxTitleBar.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -10,30 +13,57 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return SafeArea(
-      child: Scaffold(
-        body: SizedBox(
-          width: size.width,
-          height: size.height,
+    return Container(
+      color: AppColor.lightBrownColor,
+      child: Column(children: [
+        Expanded(
           child: Stack(
-            children: const [
-              Top(
-                imgPath: 'assets/images/login-register/coffee_beans.png',
-              ),
-              Bottom(
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
+            alignment: Alignment.bottomCenter,
+            children: [
+              Positioned(
+                top: 0,
+                child: Image(
+                  image: AssetImage('images/login-register/coffee_beans.png'),
                 ),
-                title: 'LOGIN',
+              ),
+              Container(
+                decoration: Box.LoginBox(),
+                height: 550,
+              ),
+              Container(
+                child: Stack(
+                  children: [
+                    Name.LoginText(),
+                  ],
+                ),
+              ),
+              Container(
+                child: Stack(
+                  children: [
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          InputField(
+                            data: Icons.email,
+                            controller: emailController,
+                            isObsecre: false,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
         ),
-      ),
+      ]),
     );
   }
 }
