@@ -11,59 +11,25 @@ import 'package:coffee_app/screens/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-<<<<<<< HEAD
 void main() => runApp(ChangeNotifierProvider(
       create: (context) => AnimationLoading(),
       child: MaterialApp(
         theme: ThemeData(
-            fontFamily: 'Helvetica',
-            textTheme: const TextTheme(
+          fontFamily: 'Helvetica',
+          textTheme: const TextTheme(
               headline1:
                   TextStyle(fontSize: 18.0, color: AppColor.darkLightColor),
-            )),
+              button: TextStyle(
+                  fontWeight: FontWeight.bold, fontFamily: 'Montserrat')),
+        ),
         title: 'CupFé',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/welcome',
+        initialRoute: '/',
         routes: {
+          '/': (context) => const MainPage(),
           '/welcome': (context) => const Welcome(),
           '/login': (context) => const Login(),
           '/register': (context) => const Register(),
-          '/': (context) => const Home(),
-          '/favorite': (context) => const Favorite(),
-          '/cart': (context) => const Cart(),
-          '/profile': (context) => const Profile(),
         },
       ),
     ));
-=======
-void main() => runApp(
-  ChangeNotifierProvider(
-    create: (context) => AnimationLoading(),
-    child: MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Helvetica',
-        
-        textTheme: const TextTheme(
-          headline1: TextStyle(
-            fontSize: 18.0,
-            color: AppColor.darkLightColor
-          ),
-          button: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Montserrat'
-          )
-        ),
-      ),
-      title: 'CupFé',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const MainPage(),
-        '/welcome': (context) => const Welcome(),
-        '/login': (context) => const Login(),
-        '/register': (context) => const Register(),
-      },
-    ),
-  )
-);
->>>>>>> 9bcb490789ae51107e5db639aa2d5fd441538add
