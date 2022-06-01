@@ -1,4 +1,7 @@
+import 'package:coffee_app/components/bottomNavbar.dart';
 import 'package:coffee_app/components/boxGradient.dart';
+import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/screens/home/topNavButton.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,26 +15,30 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Positioned(
-                top: 0,
-                child: Image(
-                  image: AssetImage('images/home/heroImage.png'),
-                ),
+      body: Container(
+        height: double.infinity,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Positioned(
+              top: 0,
+              child: Image(
+                image: AssetImage('images/home/heroImage.png'),
               ),
-              Container(
-                decoration: BoxGradient.SecondaryGradient(),
-                height: 600,
-              )
-            ],
-                  ),
-          ),
-      ]
+            ),
+            Container(
+              decoration: BoxGradient.SecondaryGradient(),
+              height: 560,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: Column(
+                children: [
+                  TopNavButton()
+                ]
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
