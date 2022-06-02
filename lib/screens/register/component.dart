@@ -1,5 +1,8 @@
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/screens/login/login.dart';
+import 'package:coffee_app/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegisterComponent extends StatefulWidget {
   const RegisterComponent ({ Key? key }) : super(key: key);
@@ -11,7 +14,7 @@ class RegisterComponent extends StatefulWidget {
 class _RegisterComponentState extends State<RegisterComponent>  {
 
   final emailController = TextEditingController();
-  String password = '';
+  final passwordController = TextEditingController();
   bool isPasswordVisible = false;
 
   @override
@@ -25,29 +28,6 @@ class _RegisterComponentState extends State<RegisterComponent>  {
   Widget build(BuildContext context) {
     return  Column(
       children: [
-        TextField(
-          controller: emailController,
-          decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(),
-            hintText: 'Enter your username',
-            hintStyle: TextStyle(color: Colors.brown[200], fontSize: 15),
-            filled: true,
-            fillColor: AppColor.lightColor,
-            prefixIcon: Icon(Icons.person_rounded, color: AppColor.darkLightColor, size: 20,),
-            border: OutlineInputBorder(),
-            contentPadding: EdgeInsets.all(20)
-          ),
-          style: TextStyle(
-            color: AppColor.darkLightColor,
-            fontSize: 15
-          ),
-          cursorColor: AppColor.darkLightColor,
-          keyboardType: TextInputType.emailAddress,
-          textInputAction: TextInputAction.done,
-        ),
-
-        SizedBox(height: 20),
-
         TextField(
           controller: emailController,
           decoration: InputDecoration(
@@ -78,7 +58,7 @@ class _RegisterComponentState extends State<RegisterComponent>  {
         SizedBox(height: 20),
 
         TextField(
-          onChanged: ((value) => setState(() => this.password = value)),
+          controller: passwordController,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(),
             hintText: 'Enter your password',
@@ -119,13 +99,21 @@ class _RegisterComponentState extends State<RegisterComponent>  {
                   color: AppColor.darkLightColor,
                   onPressed: () {}, 
                   iconSize: 35,
-                  icon: Icon(Icons.account_circle_rounded),
+                  icon: Image(
+                    image: AssetImage('images/login-register/google.png'),
+                    color: AppColor.darkLightColor,
+                  ),
                 ),
                 IconButton(
                   color: AppColor.darkLightColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<AuthenticationService>().signInAnonymously();
+                  },
                   iconSize: 35,
-                  icon: Icon(Icons.account_circle_rounded),
+                  icon: Image(
+                    image: AssetImage('images/login-register/anonymous.png'),
+                    color: AppColor.darkLightColor,
+                  ),
                 ),
               ],
             ),
@@ -138,7 +126,10 @@ class _RegisterComponentState extends State<RegisterComponent>  {
                 backgroundColor: MaterialStateProperty.all(AppColor.darkLightColor)
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                context.read<AuthenticationService>().signUp(
+                  email: emailController.text, 
+                  password: passwordController.text
+                );
               }, 
               child: Text(
                 "Register",
@@ -156,27 +147,6 @@ class _RegisterComponentState extends State<RegisterComponent>  {
           height: 20,
           thickness: 1,
           color: Colors.brown[300],
-        ),
-
-        Text(
-          "Already have an account?",
-          style: TextStyle(
-            color: AppColor.darkLightColor,
-            fontSize: 13
-          ),
-        ),
-
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/login');
-          }, 
-          child: Text(
-            'Login',
-            style: TextStyle(
-              color: AppColor.darkLightColor,
-              fontSize: 13
-            ),
-          )
         )
       ],
     );

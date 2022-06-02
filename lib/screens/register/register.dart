@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
                 ),
                 Container(
                   decoration: Box.RegisterBox(),
-                  height: 550,
+                  height: 500,
                   child:  Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 40,

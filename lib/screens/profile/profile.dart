@@ -1,4 +1,7 @@
+
+import 'package:coffee_app/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Profile extends StatefulWidget {
   const Profile({ Key? key }) : super(key: key);
@@ -8,10 +11,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return  Center(
-      child: Text('Profile screen'),
+      child: TextButton(
+        onPressed: () async {
+          context.read<AuthenticationService>().signOut();
+        },
+        child: Text('Sign out'),
+      ),
     );
   }
 }

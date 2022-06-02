@@ -1,5 +1,5 @@
 import 'package:coffee_app/components/colors.dart';
-import 'package:coffee_app/models/userModel.dart';
+import 'package:coffee_app/screens/register/register.dart';
 import 'package:coffee_app/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +13,9 @@ class LoginComponent extends StatefulWidget {
 
 class _LoginComponentState extends State<LoginComponent> {
 
-  final AuthService _auth = AuthService();
-
   final emailController = TextEditingController();
-  String password = '';
+  final passwordController = TextEditingController();
+
   bool isPasswordVisible = false;
 
   @override
@@ -28,8 +27,6 @@ class _LoginComponentState extends State<LoginComponent> {
 
   @override
   Widget build(BuildContext context) {
-
-    final user = Provider.of<UserModel?>(context);
 
     return  Column(
       children: [
@@ -63,7 +60,7 @@ class _LoginComponentState extends State<LoginComponent> {
         SizedBox(height: 20),
 
         TextField(
-          onChanged: ((value) => setState(() => this.password = value)),
+          controller: passwordController,
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(),
             hintText: 'Enter your password',
@@ -104,18 +101,21 @@ class _LoginComponentState extends State<LoginComponent> {
                   color: AppColor.lightBrownColor,
                   onPressed: () {}, 
                   iconSize: 35,
-                  icon: Icon(Icons.account_circle_rounded),
+                  icon: Image(
+                    image: AssetImage('images/login-register/google.png'),
+                    color: AppColor.lightBrownColor,
+                  ),
                 ),
                 IconButton(
                   color: AppColor.lightBrownColor,
-                  onPressed: () async {
-                    await _auth.signInAnonymously();
-                    if(user != null){
-                      Navigator.pushNamed(context, '/');
-                    }
+                  onPressed: () {
+                    context.read<AuthenticationService>().signInAnonymously();
                   },
                   iconSize: 35,
-                  icon: Icon(Icons.account_circle_rounded),
+                  icon: Image(
+                    image: AssetImage('images/login-register/anonymous.png'),
+                    color: AppColor.lightBrownColor,
+                  ),
                 ),
               ],
             ),
@@ -128,7 +128,11 @@ class _LoginComponentState extends State<LoginComponent> {
                 backgroundColor: MaterialStateProperty.all(AppColor.lightBrownColor)
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                context.read<AuthenticationService>().signIn(
+                  email: emailController.text, 
+                  password: passwordController.text
+                );
+                print('Login pressed');
               }, 
               child: Text(
                 "Login",
@@ -147,27 +151,6 @@ class _LoginComponentState extends State<LoginComponent> {
           thickness: 1,
           color: AppColor.darkLightColor,
         ),
-
-        Text(
-          "Doesn't have an account yet?",
-          style: TextStyle(
-            color: AppColor.lightBrownColor,
-            fontSize: 13
-          ),
-        ),
-
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/register');
-          }, 
-          child: Text(
-            'Register',
-            style: TextStyle(
-              color: AppColor.lightBrownColor,
-              fontSize: 13
-            ),
-          )
-        )
       ],
     );
   }
