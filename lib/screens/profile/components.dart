@@ -2,6 +2,9 @@ import 'dart:html';
 
 import 'package:coffee_app/components/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../services/auth.dart';
 
 class profileComponents extends StatefulWidget {
   const profileComponents({Key? key}) : super(key: key);
@@ -155,7 +158,9 @@ class _profileComponentsState extends State<profileComponents> {
           child: Align(
             alignment: Alignment.center,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                context.read<AuthenticationService>().signOut();
+              },
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
                 padding: EdgeInsets.all(30),

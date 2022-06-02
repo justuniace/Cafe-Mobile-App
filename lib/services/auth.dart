@@ -1,30 +1,61 @@
-import 'package:coffee_app/models/userModel.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class AuthService {
-  
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+class AuthenticationService {
+  final FirebaseAuth _firebaseAuth;
+  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
-  // CREATE USER OBJECT BASED ON THE CUSTOM MODEL
-  UserModel? _user(User user) {
-    return user != null ? UserModel( uid: user.uid ) : null;
+  AuthenticationService(this._firebaseAuth);
+
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
   }
 
-  Stream<UserModel?> get user {
-    return _auth.authStateChanges()
-    .map((User? user) => _user(user!));
-  }
-
-  // SIGN IN ANONYMOUSLY
-  Future signInAnonymously() async {
+  Future<String?> signIn({ required String? email, required String? password }) async {
     try {
-      UserCredential result = await _auth.signInAnonymously();
-      User? user = result.user;
-      return _user(user!);
-    } catch (e) {
-      print(e.toString());
-      return null;
+      await _firebaseAuth.signInWithEmailAndPassword(email: email!, password: password!);
+      return 'Signed in';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
     }
   }
 
+  Future<String?> signUp({ required String? email, required String? password }) async {
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(email: email!, password: password!);
+      return 'Signed up';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<String?> signInAnonymously() async {
+    try {
+      await _firebaseAuth.signInAnonymously();
+      return 'Signed up';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<String?> signInUsingGoogle() async {
+    try {
+      await _googleSignIn.signIn();
+      return "Signed in using google";
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<String?> signOutUsingGoogle() async {
+    try {
+      await _googleSignIn.signOut();
+      return "Signed out using google";
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
 }

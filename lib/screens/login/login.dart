@@ -3,6 +3,7 @@ import 'package:coffee_app/screens/login/components.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_app/components/boxLogin-register.dart';
 import 'package:coffee_app/components/boxTitleBar.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
         color: AppColor.lightBrownColor,
@@ -34,7 +36,7 @@ class _LoginState extends State<Login> {
                 ),
                 Container(
                   decoration: Box.LoginBox(),
-                  height: 550,
+                  height: 500,
                   child:  Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 40,
