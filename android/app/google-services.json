@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "598124076737",
-    "project_id": "flutter-coffee-shop-cc736",
-    "storage_bucket": "flutter-coffee-shop-cc736.appspot.com"
+    "project_number": "659993229138",
+    "project_id": "coffee-shop-fb1c5",
+    "storage_bucket": "coffee-shop-fb1c5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:598124076737:android:ddd7d66cfdfd8e5dd57e40",
+        "mobilesdk_app_id": "1:659993229138:android:6c969b9b02b7506a516c8b",
         "android_client_info": {
           "package_name": "com.example.coffee_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "598124076737-cj1a69s5mbavd16h7vbmmv1e8ueiqjh6.apps.googleusercontent.com",
+          "client_id": "659993229138-o634khbvsoogv4o1i480vcji2h8sog03.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBsf3hxkqKHBZP5lAemwT4Y1tJiOb145-g"
+          "current_key": "AIzaSyA63pcdd4onETQ9fuOq7jlA9D7lYOjhDdM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "598124076737-cj1a69s5mbavd16h7vbmmv1e8ueiqjh6.apps.googleusercontent.com",
+              "client_id": "659993229138-o634khbvsoogv4o1i480vcji2h8sog03.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

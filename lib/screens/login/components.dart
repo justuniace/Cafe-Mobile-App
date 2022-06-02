@@ -16,7 +16,7 @@ class _LoginComponentState extends State<LoginComponent> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  bool isPasswordVisible = false;
+  bool isPasswordVisible = true;
 
   @override
   void initState() {
@@ -99,7 +99,9 @@ class _LoginComponentState extends State<LoginComponent> {
                   padding: EdgeInsets.all(0),
                   alignment: Alignment.centerLeft,
                   color: AppColor.lightBrownColor,
-                  onPressed: () {}, 
+                  onPressed: () {
+                    context.read<AuthenticationService>().signInUsingGoogle();
+                  }, 
                   iconSize: 35,
                   icon: Image(
                     image: AssetImage('images/login-register/google.png'),

@@ -35,8 +35,10 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
     return Scaffold(
       body: screens[index],
       bottomNavigationBar: Container(
-        height: 80,
-        color: AppColor.darkLightColor,
+        decoration: BoxDecoration(
+          color: index == 1 ? AppColor.darkLightColor : AppColor.lightBrownColor,
+        ),
+        height: 60,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,8 +46,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
             Expanded(
               child: TextButton(
                 style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.all(40)),
-                ),
+                  padding: MaterialStateProperty.all(EdgeInsets.all(30)),                ),
                 onPressed: () { 
                   setState(() { 
                     index = 0;
@@ -54,7 +55,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
                 child: Text(
                   'LOGIN',
                   style: TextStyle(
-                    color: AppColor.lightBrownColor
+                    color: index == 1 ? AppColor.lightBrownColor : AppColor.darkLightColor
                   ),
                 )
               ),
@@ -62,7 +63,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
             Expanded(
               child: TextButton(
                 style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.all(40)),
+                  padding: MaterialStateProperty.all(EdgeInsets.all(30)),
                 ),
                 onPressed: () { 
                   setState(() { 
@@ -72,7 +73,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
-                    color: AppColor.lightBrownColor
+                    color: index == 1 ? AppColor.lightBrownColor : AppColor.darkLightColor
                   ),
                 )
               ),

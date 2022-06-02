@@ -15,7 +15,7 @@ class _RegisterComponentState extends State<RegisterComponent>  {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isPasswordVisible = false;
+  bool isPasswordVisible = true;
 
   @override
   void initState() {

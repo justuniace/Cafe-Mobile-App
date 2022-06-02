@@ -1,8 +1,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth;
+  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
   AuthenticationService(this._firebaseAuth);
 
@@ -39,4 +41,21 @@ class AuthenticationService {
     }
   }
 
+  Future<String?> signInUsingGoogle() async {
+    try {
+      await _googleSignIn.signIn();
+      return "Signed in using google";
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<String?> signOutUsingGoogle() async {
+    try {
+      await _googleSignIn.signOut();
+      return "Signed out using google";
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
 }

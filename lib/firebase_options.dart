@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBhMzbj8_K-SHAALFEXAKNqbaZQk7pw_08',
-    appId: '1:598124076737:web:298163be604f2b4cd57e40',
-    messagingSenderId: '598124076737',
-    projectId: 'flutter-coffee-shop-cc736',
-    authDomain: 'flutter-coffee-shop-cc736.firebaseapp.com',
-    storageBucket: 'flutter-coffee-shop-cc736.appspot.com',
+    apiKey: 'AIzaSyB1BfRGKX-HWaEp-dMhjz5167eyuKUTffg',
+    appId: '1:659993229138:web:d93e71bde4556663516c8b',
+    messagingSenderId: '659993229138',
+    projectId: 'coffee-shop-fb1c5',
+    authDomain: 'coffee-shop-fb1c5.firebaseapp.com',
+    storageBucket: 'coffee-shop-fb1c5.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBsf3hxkqKHBZP5lAemwT4Y1tJiOb145-g',
-    appId: '1:598124076737:android:ddd7d66cfdfd8e5dd57e40',
-    messagingSenderId: '598124076737',
-    projectId: 'flutter-coffee-shop-cc736',
-    storageBucket: 'flutter-coffee-shop-cc736.appspot.com',
+    apiKey: 'AIzaSyA63pcdd4onETQ9fuOq7jlA9D7lYOjhDdM',
+    appId: '1:659993229138:android:6c969b9b02b7506a516c8b',
+    messagingSenderId: '659993229138',
+    projectId: 'coffee-shop-fb1c5',
+    storageBucket: 'coffee-shop-fb1c5.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB9NxOP1nThE4HxF0EVhBPjGI02xTGXDSQ',
-    appId: '1:598124076737:ios:48594a078191f7afd57e40',
-    messagingSenderId: '598124076737',
-    projectId: 'flutter-coffee-shop-cc736',
-    storageBucket: 'flutter-coffee-shop-cc736.appspot.com',
-    iosClientId: '598124076737-226122jg32fd6f3uji0qfmcrtbuaflkg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCgpzHixknB-19_4fk9-NC_f_IpuZmO5Zs',
+    appId: '1:659993229138:ios:292d709e23fe6c5c516c8b',
+    messagingSenderId: '659993229138',
+    projectId: 'coffee-shop-fb1c5',
+    storageBucket: 'coffee-shop-fb1c5.appspot.com',
+    iosClientId: '659993229138-h4fgg9es6r0gd5jfm9teqslqdu9o90sj.apps.googleusercontent.com',
     iosBundleId: 'com.example.coffeeApp',
   );
 }
