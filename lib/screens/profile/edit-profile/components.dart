@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../components/colors.dart';
 import 'package:intl/intl.dart';
@@ -20,6 +25,29 @@ class _editComponentsState extends State<editComponents> {
   final passwordController = TextEditingController();
   final birthDateController = TextEditingController();
   final addressController = TextEditingController();
+
+  File? image;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  // void pickUploadProfilePic() async {
+  //   final image = await ImagePicker().pickImage(
+  //     source: ImageSource.gallery,
+  //     maxHeight: 512,
+  //     maxWidth: 512,
+  //     imageQuality: 90,
+  //   );
+
+  //   DocumentReference ref = FirebaseStorage.instance.ref().child("$")
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +90,11 @@ class _editComponentsState extends State<editComponents> {
                   //profile image
                   CircleAvatar(
                     child: Center(
-                      child: Icon(
-                        Icons.person,
-                        color: AppColor.lightColor,
-                        size: 50,
-                      ),
-                    ),
+                        child: Icon(
+                      Icons.person,
+                      color: AppColor.lightColor,
+                      size: 50,
+                    )),
                     backgroundColor: AppColor.darkColor,
                   ),
                   Positioned(
@@ -83,10 +110,15 @@ class _editComponentsState extends State<editComponents> {
                             color: AppColor.lightBrownColor,
                           ),
                           color: AppColor.darkLightColor),
-                      child: Icon(
-                        Icons.add_photo_alternate_rounded,
-                        color: AppColor.lightBrownColor,
-                        size: 30,
+                      child: GestureDetector(
+                        onTap: () {
+                          pickImage();
+                        },
+                        child: Icon(
+                          Icons.add_photo_alternate_rounded,
+                          color: AppColor.lightBrownColor,
+                          size: 30,
+                        ),
                       ),
                     ),
                   ),
@@ -96,11 +128,11 @@ class _editComponentsState extends State<editComponents> {
           ),
         ]),
         SizedBox(height: 30),
-        textField("First Name", "Fisrt name"),
-        textField("Last Name", "Last name"),
-        textField("Contact Number", "Contact number"),
-        textField("Email", "email"),
-        textField("Password", "password"),
+        textField("First Name", "Fisrt name", firstnameController),
+        textField("Last Name", "Last name", lastnameController),
+        textField("Contact Number", "Contact number", contactNumberController),
+        textField("Email", "email", emailController),
+        textField("Password", "password", passwordController),
         Padding(
           padding: const EdgeInsets.only(left: 60),
           child: Align(
@@ -174,22 +206,46 @@ class _editComponentsState extends State<editComponents> {
             ),
           ),
         ),
-        textField("Address", "address"),
+        textField("Address", "address", addressController),
         //save button
-        Container(
-          height: kToolbarHeight,
-          width: 270,
-          margin: EdgeInsets.only(bottom: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: AppColor.darkLightColor,
-          ),
-          child: Center(
-            child: Text(
-              "SAVE",
-              style: const TextStyle(
-                color: AppColor.lightColor,
-                fontSize: 16,
+        GestureDetector(
+          onTap: () async {
+            String firstName = firstnameController.text;
+            String lastName = lastnameController.text;
+            String contactNumber = contactNumberController.text;
+            String email = emailController.text;
+            String password = passwordController.text;
+            String birthDate = birthDateController.text;
+            String address = addressController.text;
+
+            if (firstName.isEmpty) {
+              showSnackBar("You cannot leave your first name empty");
+            } else if (lastName.isEmpty) {
+              showSnackBar("You cannot leave your last name empty");
+            } else if (contactNumber.isEmpty) {
+              showSnackBar("You cannot leave your contact number empty");
+            } else if (address.isEmpty) {
+              showSnackBar("You cannot leave your address empty");
+            } else {
+              //saved in database
+              // await FirebaseFirestore.instance.collection(collectionPath);
+            }
+          },
+          child: Container(
+            height: kToolbarHeight,
+            width: 270,
+            margin: EdgeInsets.only(bottom: 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              color: AppColor.darkLightColor,
+            ),
+            child: Center(
+              child: Text(
+                "SAVE",
+                style: const TextStyle(
+                  color: AppColor.lightColor,
+                  fontSize: 16,
+                ),
               ),
             ),
           ),
@@ -198,7 +254,8 @@ class _editComponentsState extends State<editComponents> {
     );
   }
 
-  Widget textField(String title, String hint) {
+  Widget textField(
+      String title, String hint, TextEditingController controller) {
     return Column(children: [
       Padding(
         padding: const EdgeInsets.only(left: 60),
@@ -215,7 +272,8 @@ class _editComponentsState extends State<editComponents> {
       Container(
         margin: EdgeInsets.only(bottom: 12),
         width: 270,
-        child: TextFormField(
+        child: TextField(
+          controller: controller,
           cursorColor: Colors.black54,
           maxLines: 1,
           decoration: InputDecoration(
@@ -242,6 +300,7 @@ class _editComponentsState extends State<editComponents> {
   void showSnackBar(String text) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        behavior: SnackBarBehavior.floating,
         content: Text(
           text,
         ),

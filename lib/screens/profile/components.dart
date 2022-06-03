@@ -1,4 +1,5 @@
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/screens/profile/account/account.dart';
 import 'package:coffee_app/screens/profile/edit-profile/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -90,7 +91,10 @@ class _ProfileComponentsState extends State<ProfileComponents> {
           child: Align(
             alignment: Alignment.center,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Account()));
+              },
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
                 padding: EdgeInsets.all(30),

@@ -29,7 +29,7 @@ class InputField extends StatelessWidget {
           ),
           labelText: label,
           labelStyle: const TextStyle(
-            fontFamily: "Helvetica.ttf",
+            fontFamily: "Helvetica",
           ),
         ),
       ),
