@@ -1,62 +1,90 @@
-import 'dart:html';
-
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/screens/profile/edit-profile/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/auth.dart';
 
-class profileComponents extends StatefulWidget {
-  const profileComponents({Key? key}) : super(key: key);
+class ProfileComponents extends StatefulWidget {
+  const ProfileComponents({Key? key}) : super(key: key);
 
   @override
-  State<profileComponents> createState() => _profileComponentsState();
+  State<ProfileComponents> createState() => _ProfileComponentsState();
 }
 
-class _profileComponentsState extends State<profileComponents> {
+class _ProfileComponentsState extends State<ProfileComponents> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 150,
-          width: 150,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              CircleAvatar(
-                //just for the mean time
-                backgroundColor: AppColor.darkLightColor,
+        Stack(children: [
+          SizedBox(
+            child: Container(
+              width: double.infinity,
+              height: 170,
+              decoration: BoxDecoration(
+                color: AppColor.darkLightColor,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(150),
+                    bottomRight: Radius.circular(2)),
               ),
-              Positioned(
-                right: -3,
-                bottom: 0,
-                child: SizedBox(
-                  height: 46,
-                  width: 46,
-                  child: Icon(
-                    Icons.add_photo_alternate_rounded,
-                    size: 35,
-                  ),
+              child: SizedBox(
+                width: 50,
+                height: 40,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: CircleAvatar(
+                        maxRadius: 30.0,
+                        backgroundColor: AppColor.lightColor,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(100, 30, 10, 0),
+                      child: SizedBox(
+                        child: Text(
+                          "Hello!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: "Montserrat-Medium",
+                              fontSize: 20,
+                              color: AppColor.lightColor),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(115, 60, 0, 0),
+                      child: SizedBox(
+                        child: Text(
+                          "username",
+                          style: TextStyle(
+                            color: AppColor.lightColor,
+                            fontFamily: "Helevetica",
+                            fontSize: 35,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        icon: Icon(Icons.create),
+                        color: AppColor.lightBrownColor,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const editProfile()));
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              Text(
-                "Username",
-                style: TextStyle(
-                  color: AppColor.darkColor,
-                  fontSize: 25,
-                ),
-              ),
-            ],
-          ),
-        ),
+        ]),
         SizedBox(height: 45),
         SizedBox(
           child: Align(
@@ -81,7 +109,38 @@ class _profileComponentsState extends State<profileComponents> {
                   "Account",
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: 1.5,
-                        fontFamily: 'Helvetica.ttf',
+                        decorationColor: AppColor.darkColor,
+                      ),
+                ),
+              ]),
+            ),
+          ),
+        ),
+        SizedBox(height: 20),
+        SizedBox(
+          child: Align(
+            alignment: Alignment.center,
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                fixedSize: Size.fromWidth(330),
+                padding: EdgeInsets.all(30),
+                backgroundColor: AppColor.lightBrownColor,
+                elevation: 2,
+              ),
+              child: Row(children: [
+                SizedBox(
+                  width: 40,
+                  child: Icon(
+                    Icons.inventory,
+                    color: AppColor.darkColor,
+                  ),
+                ),
+                Text(
+                  "Purchased History",
+                  style: DefaultTextStyle.of(context).style.apply(
+                        fontSizeFactor: 1.5,
+                        fontFamily: 'Helvetica',
                         decorationColor: AppColor.darkColor,
                       ),
                 ),
@@ -113,7 +172,7 @@ class _profileComponentsState extends State<profileComponents> {
                   "Settings",
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: 1.5,
-                        fontFamily: 'Helvetica.ttf',
+                        fontFamily: 'Helvetica',
                         decorationColor: AppColor.darkColor,
                       ),
                 ),
@@ -145,7 +204,7 @@ class _profileComponentsState extends State<profileComponents> {
                   "Help",
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: 1.5,
-                        fontFamily: 'Helvetica.ttf',
+                        fontFamily: 'Helvetica',
                         decorationColor: AppColor.darkColor,
                       ),
                 ),
@@ -164,16 +223,26 @@ class _profileComponentsState extends State<profileComponents> {
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
                 padding: EdgeInsets.all(30),
-                backgroundColor: AppColor.darkColor,
+                backgroundColor: AppColor.lightBrownColor,
                 elevation: 2,
               ),
-              child: Text(
-                "Logout",
-                style: TextStyle(
-                  color: AppColor.lightColor,
-                  fontSize: 15,
+              child: Row(children: [
+                SizedBox(
+                  width: 40,
+                  child: Icon(
+                    Icons.logout,
+                    color: AppColor.darkColor,
+                  ),
                 ),
-              ),
+                Text(
+                  "Sign Out",
+                  style: DefaultTextStyle.of(context).style.apply(
+                        fontSizeFactor: 1.5,
+                        fontFamily: 'Helvetica',
+                        decorationColor: AppColor.darkColor,
+                      ),
+                ),
+              ]),
             ),
           ),
         ),
