@@ -22,7 +22,7 @@ class _ProfileState extends State<Profile> {
             Navigator.pushNamed(context, "/");
           },
           color: AppColor.lightBrownColor,
-          icon: Icon(Icons.arrow_back_ios_new),
+          icon: Icon(Icons.arrow_back),
         ),
       ),
       body: ProfileComponents(),

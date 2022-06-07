@@ -97,7 +97,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
               },
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(29),
                 backgroundColor: AppColor.lightBrownColor,
                 elevation: 2,
               ),
@@ -128,7 +128,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
               onPressed: () {},
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(29),
                 backgroundColor: AppColor.lightBrownColor,
                 elevation: 2,
               ),
@@ -160,7 +160,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
               onPressed: () {},
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(29),
                 backgroundColor: AppColor.lightBrownColor,
                 elevation: 2,
               ),
@@ -168,12 +168,13 @@ class _ProfileComponentsState extends State<ProfileComponents> {
                 SizedBox(
                   width: 40,
                   child: Icon(
-                    Icons.settings,
+                    Icons.groups,
                     color: AppColor.darkColor,
+                    size: 25,
                   ),
                 ),
                 Text(
-                  "Settings",
+                  "About Us",
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: 1.5,
                         fontFamily: 'Helvetica',
@@ -192,7 +193,39 @@ class _ProfileComponentsState extends State<ProfileComponents> {
               onPressed: () {},
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(29),
+                backgroundColor: AppColor.lightBrownColor,
+                elevation: 2,
+              ),
+              child: Row(children: [
+                SizedBox(
+                  width: 40,
+                  child: Icon(
+                    Icons.gpp_good,
+                    color: AppColor.darkColor,
+                  ),
+                ),
+                Text(
+                  "Privacy and Security",
+                  style: DefaultTextStyle.of(context).style.apply(
+                        fontSizeFactor: 1.5,
+                        fontFamily: 'Helvetica',
+                        decorationColor: AppColor.darkColor,
+                      ),
+                ),
+              ]),
+            ),
+          ),
+        ),
+        SizedBox(height: 20),
+        SizedBox(
+          child: Align(
+            alignment: Alignment.center,
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                fixedSize: Size.fromWidth(330),
+                padding: EdgeInsets.all(29),
                 backgroundColor: AppColor.lightBrownColor,
                 elevation: 2,
               ),
@@ -205,7 +238,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
                   ),
                 ),
                 Text(
-                  "Help",
+                  "Help Center",
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: 1.5,
                         fontFamily: 'Helvetica',
@@ -226,7 +259,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
               },
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(29),
                 backgroundColor: AppColor.lightBrownColor,
                 elevation: 2,
               ),

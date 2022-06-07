@@ -25,7 +25,7 @@ class _editProfileState extends State<editProfile> {
                 MaterialPageRoute(builder: (context) => const Profile()));
           },
           color: AppColor.lightBrownColor,
-          icon: Icon(Icons.arrow_back_ios_new),
+          icon: Icon(Icons.arrow_back),
         ),
       ),
       body: editComponents(),

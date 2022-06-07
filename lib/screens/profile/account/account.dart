@@ -25,7 +25,7 @@ class _AccountState extends State<Account> {
                 MaterialPageRoute(builder: (context) => const Profile()));
           },
           color: AppColor.darkLightColor,
-          icon: Icon(Icons.arrow_back_ios_new),
+          icon: Icon(Icons.arrow_back),
         ),
       ),
       body: accountComponents(),
