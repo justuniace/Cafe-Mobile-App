@@ -1,10 +1,10 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../components/colors.dart';
 import 'package:intl/intl.dart';
 
@@ -17,6 +17,7 @@ class editComponents extends StatefulWidget {
 
 class _editComponentsState extends State<editComponents> {
   String birth = "Date of Birth";
+  static bool canEdit = true;
 
   final firstnameController = TextEditingController();
   final lastnameController = TextEditingController();
@@ -46,7 +47,7 @@ class _editComponentsState extends State<editComponents> {
   //     imageQuality: 90,
   //   );
 
-  //   DocumentReference ref = FirebaseStorage.instance.ref().child("$")
+  //  DocumentReference ref = FirebaseStorage.instance.ref().child("$")
   // }
 
   @override
@@ -89,6 +90,7 @@ class _editComponentsState extends State<editComponents> {
                 children: [
                   //profile image
                   CircleAvatar(
+                    radius: 80.0,
                     child: Center(
                         child: Icon(
                       Icons.person,
@@ -218,17 +220,20 @@ class _editComponentsState extends State<editComponents> {
             String birthDate = birthDateController.text;
             String address = addressController.text;
 
-            if (firstName.isEmpty) {
-              showSnackBar("You cannot leave your first name empty");
-            } else if (lastName.isEmpty) {
-              showSnackBar("You cannot leave your last name empty");
-            } else if (contactNumber.isEmpty) {
-              showSnackBar("You cannot leave your contact number empty");
-            } else if (address.isEmpty) {
-              showSnackBar("You cannot leave your address empty");
-            } else {
-              //saved in database
-              // await FirebaseFirestore.instance.collection(collectionPath);
+            if (canEdit) {
+              if (firstName.isEmpty) {
+                showSnackBar("You cannot leave your first name empty");
+              } else if (lastName.isEmpty) {
+                showSnackBar("You cannot leave your last name empty");
+              } else if (contactNumber.isEmpty) {
+                showSnackBar("You cannot leave your contact number empty");
+              } else if (address.isEmpty) {
+                showSnackBar("You cannot leave your address empty");
+              } else {
+                //saved in database
+                // await FirebaseFirestore.instance.collection(collectionPath).doc().update({
+                // 'canEdit' = false,});
+              }
             }
           },
           child: Container(

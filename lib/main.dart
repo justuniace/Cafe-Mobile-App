@@ -42,7 +42,7 @@ void main() async {
       ),
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/main',
+      initialRoute: '/',
       routes: {
         '/': (context) => const AuthenticationWrapper(),
         '/main': (context) => const MainPage(),

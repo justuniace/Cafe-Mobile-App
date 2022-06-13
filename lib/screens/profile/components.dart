@@ -1,6 +1,7 @@
 import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/screens/profile/account/account.dart';
 import 'package:coffee_app/screens/profile/edit-profile/edit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
