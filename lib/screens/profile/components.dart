@@ -2,6 +2,7 @@ import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/screens/profile/aboutUs/about.dart';
 import 'package:coffee_app/screens/profile/account/account.dart';
 import 'package:coffee_app/screens/profile/editProfile/edit.dart';
+import 'package:coffee_app/screens/profile/privacy/privacy.dart';
 import 'package:coffee_app/screens/profile/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -196,7 +197,10 @@ class _ProfileComponentsState extends State<ProfileComponents> {
           child: Align(
             alignment: Alignment.center,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Privacy()));
+              },
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
                 padding: EdgeInsets.all(29),
@@ -212,7 +216,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
                   ),
                 ),
                 Text(
-                  "Privacy and Security",
+                  "Privacy Policy",
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: 1.5,
                         fontFamily: 'Helvetica',

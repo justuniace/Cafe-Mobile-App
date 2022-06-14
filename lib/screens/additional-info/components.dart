@@ -1,3 +1,4 @@
+import 'package:coffee_app/screens/main/mainPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -109,30 +110,50 @@ class _AdditionalComponentsState extends State<AdditionalComponents> {
                   setState(() {
                     birthDateController.text = formattedDate;
                   });
-                } else {
-                  print("Date is not selected");
                 }
               }),
         ),
         SizedBox(height: 15),
         textField("Address", addressController),
         SizedBox(height: 14),
-        Container(
-          alignment: Alignment.centerRight,
-          child: TextButton(
-              style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                      EdgeInsets.symmetric(horizontal: 30, vertical: 19)),
-                  backgroundColor:
-                      MaterialStateProperty.all(AppColor.darkLightColor)),
-              onPressed: () {
-                createUser();
-                print('user created');
-              },
-              child: Text(
-                "Register",
-                style: TextStyle(color: AppColor.lightBrownColor),
-              )),
+        Stack(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        EdgeInsets.symmetric(horizontal: 30, vertical: 19)),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(color: AppColor.darkLightColor),
+                  )),
+            ),
+            Container(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                  style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 19)),
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColor.darkColor)),
+                  onPressed: () {
+                    createUser();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MainPage()
+                        )
+                      );
+                  },
+                  child: Text(
+                    "Register",
+                    style: TextStyle(color: AppColor.lightBrownColor),
+                  )),
+            ),
+          ],
         )
       ],
     );

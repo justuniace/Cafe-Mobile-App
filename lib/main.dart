@@ -3,9 +3,7 @@ import 'package:coffee_app/authentication.dart';
 import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/firebase_options.dart';
 import 'package:coffee_app/provider/animationLoading.dart';
-import 'package:coffee_app/screens/login/login.dart';
 import 'package:coffee_app/screens/main/mainPage.dart';
-import 'package:coffee_app/screens/register/register.dart';
 import 'package:coffee_app/screens/welcome/welcome.dart';
 import 'package:coffee_app/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,7 +39,7 @@ void main() async {
       ),
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/welcome',
+      initialRoute: '/',
       routes: {
         '/': (context) => const AuthenticationWrapper(),
         '/main': (context) => const MainPage(),
