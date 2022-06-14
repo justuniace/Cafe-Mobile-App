@@ -158,7 +158,7 @@ class _profileComponentsState extends State<profileComponents> {
           child: Align(
             alignment: Alignment.center,
             child: TextButton(
-              onPressed: () async {
+              onPressed: () {
                 context.read<AuthenticationService>().signOut();
               },
               style: TextButton.styleFrom(

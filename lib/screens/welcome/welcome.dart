@@ -66,7 +66,7 @@ class _WelcomeState extends State<Welcome> with TickerProviderStateMixin {
                       SizedBox(height: 20),
                       TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushNamed(context, '/');
                           },
                           style: Button.PrimaryButton(),
                           child: Text('Get started'))
