@@ -26,7 +26,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
 
     final firebaseUser = context.watch<User?>();
 
-    print(firebaseUser);
+    print(firebaseUser?.uid);
 
     if(firebaseUser != null){
       return MainPage();

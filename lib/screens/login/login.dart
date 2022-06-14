@@ -19,7 +19,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Container(
         color: AppColor.lightBrownColor,
@@ -37,22 +36,18 @@ class _LoginState extends State<Login> {
                 Container(
                   decoration: Box.LoginBox(),
                   height: 500,
-                  child:  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 35
-                    ),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 35),
                     child: Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Name.LoginText(),
-                          SizedBox(height: 50),
-                          LoginComponent()
-                        ],
-                      )
-                    ),
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Name.LoginText(),
+                            SizedBox(height: 50),
+                            LoginComponent()
+                          ],
+                        )),
                   ),
                 ),
               ],

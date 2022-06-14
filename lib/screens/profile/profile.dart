@@ -15,17 +15,17 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       backgroundColor: AppColor.lightBrownColor,
       appBar: AppBar(
-        backgroundColor: AppColor.lightBrownColor,
+        backgroundColor: AppColor.darkLightColor,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.pushNamed(context, "/");
           },
-          color: AppColor.darkColor,
-          icon: Icon(Icons.arrow_back_ios_new),
+          color: AppColor.lightBrownColor,
+          icon: Icon(Icons.arrow_back),
         ),
       ),
-      body: profileComponents(),
+      body: ProfileComponents(),
     );
   }
 }

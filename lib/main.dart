@@ -1,5 +1,4 @@
 import 'dart:js';
-
 import 'package:coffee_app/authentication.dart';
 import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/firebase_options.dart';

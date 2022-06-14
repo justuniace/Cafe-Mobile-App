@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth;
@@ -24,10 +25,16 @@ class AuthenticationService {
   }
 
   Future<String?> signUp({ required String? email, required String? password }) async {
+    final db = FirebaseFirestore.instance.collection('users');
+
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(email: email!, password: password!);
+      await _firebaseAuth.createUserWithEmailAndPassword(email: email!, password: password!)
+      .then((cred) => db.doc(cred.user?.uid).set({
+        'email': cred.user?.email
+      }));
       return 'Signed up';
     } on FirebaseAuthException catch (e) {
+      print(e.message);
       return e.message;
     }
   }
