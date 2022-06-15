@@ -3,6 +3,7 @@ import 'package:coffee_app/authentication.dart';
 import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/firebase_options.dart';
 import 'package:coffee_app/provider/animationLoading.dart';
+import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/main/mainPage.dart';
 import 'package:coffee_app/screens/welcome/welcome.dart';
 import 'package:coffee_app/services/auth.dart';
@@ -18,7 +19,10 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<AnimationLoading>(
-          create: (_) => AnimationLoading()),
+        create: (_) => AnimationLoading()
+      ),
+      ChangeNotifierProvider<CurrentUser>(
+        create: (_) => CurrentUser()),
       Provider<AuthenticationService>(
         create: (_) => AuthenticationService(FirebaseAuth.instance),
       ),
@@ -39,7 +43,11 @@ void main() async {
       ),
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
       initialRoute: '/main',
+=======
+      initialRoute: '/welcome',
+>>>>>>> f09bd60966619070091e69434573db297906ba73
       routes: {
         '/': (context) => const AuthenticationWrapper(),
         '/main': (context) => const MainPage(),

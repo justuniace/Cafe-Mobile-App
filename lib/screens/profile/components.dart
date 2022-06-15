@@ -1,4 +1,5 @@
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/profile/aboutUs/about.dart';
 import 'package:coffee_app/screens/profile/account/account.dart';
 import 'package:coffee_app/screens/profile/editProfile/edit.dart';
@@ -20,6 +21,10 @@ class ProfileComponents extends StatefulWidget {
 class _ProfileComponentsState extends State<ProfileComponents> {
   @override
   Widget build(BuildContext context) {
+
+    print('Profile');
+    print(context.read<CurrentUser>().currentUser);
+
     return Column(
       children: [
         Stack(children: [
@@ -62,7 +67,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
                       padding: const EdgeInsets.fromLTRB(115, 60, 0, 0),
                       child: SizedBox(
                         child: Text(
-                          "username",
+                          'Username',
                           style: TextStyle(
                             color: AppColor.lightColor,
                             fontFamily: "Helevetica",

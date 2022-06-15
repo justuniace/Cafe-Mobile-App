@@ -1,4 +1,5 @@
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/profile/components.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColor.lightBrownColor,
       appBar: AppBar(
