@@ -10,6 +10,6 @@ class helpCenter extends StatefulWidget {
 class _helpCenterState extends State<helpCenter> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }

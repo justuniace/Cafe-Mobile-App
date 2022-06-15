@@ -2,6 +2,8 @@ import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/screens/profile/components.dart';
 import 'package:flutter/material.dart';
 
+import 'editProfile/edit.dart';
+
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -17,13 +19,29 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         backgroundColor: AppColor.darkLightColor,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, "/");
-          },
-          color: AppColor.lightBrownColor,
-          icon: Icon(Icons.arrow_back),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: AppColor.lightBrownColor,
+            onPressed: () {},
+          ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 22),
+            child: IconButton(
+              icon: Icon(Icons.create),
+              color: AppColor.lightBrownColor,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const editProfile()));
+              },
+            ),
+          ),
+        ],
       ),
       body: ProfileComponents(),
     );

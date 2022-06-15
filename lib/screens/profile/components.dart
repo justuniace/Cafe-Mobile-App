@@ -71,19 +71,6 @@ class _ProfileComponentsState extends State<ProfileComponents> {
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        icon: Icon(Icons.create),
-                        color: AppColor.lightBrownColor,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const editProfile()));
-                        },
-                      ),
-                    ),
                   ],
                 ),
               ),
