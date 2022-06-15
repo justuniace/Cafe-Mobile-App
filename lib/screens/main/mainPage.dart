@@ -1,9 +1,14 @@
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/cart/cart.dart';
 import 'package:coffee_app/screens/favorite/favorite.dart';
 import 'package:coffee_app/screens/home/home.dart';
 import 'package:coffee_app/screens/profile/profile.dart';
+import 'package:coffee_app/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({ Key? key }) : super(key: key);
@@ -14,8 +19,26 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  int currentIndex = 0;
+  @override
+  void initState() {
+    final currentUser = context.read<User?>()?.uid;
+    
 
+    initializeUser() async {
+      await FirebaseFirestore.instance.collection('users')
+      .doc(currentUser)
+      .get()
+      .then((doc) {
+        context.read<CurrentUser>().setUser(doc.data());
+      });
+    }
+
+    initializeUser();
+
+    super.initState();
+  }
+
+  int currentIndex = 0;
   final screens = [
     Home(),
     Favorite(),
@@ -23,9 +46,9 @@ class _MainPageState extends State<MainPage> {
     Profile()
   ];
 
-
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(  
       body: IndexedStack(
         index: currentIndex,

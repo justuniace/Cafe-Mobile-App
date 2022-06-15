@@ -24,14 +24,18 @@ class AuthenticationService {
     }
   }
 
-  Future<String?> signUp({ required String? email, required String? password }) async {
+  Future<String?> signUp({ required String? email, required String? password, required String? displayName }) async {
     final db = FirebaseFirestore.instance.collection('users');
 
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(email: email!, password: password!)
-      .then((cred) => db.doc(cred.user?.uid).set({
-        'email': cred.user?.email
-      }));
+      .then((cred)async{
+        await cred.user?.updateDisplayName(displayName);
+        await db.doc(cred.user?.uid).set({
+          'username': cred.user?.displayName,
+          'email': cred.user?.email
+        });
+      });
       return 'Signed up';
     } on FirebaseAuthException catch (e) {
       print(e.message);
@@ -44,6 +48,7 @@ class AuthenticationService {
       await _firebaseAuth.signInAnonymously();
       return 'Signed up';
     } on FirebaseAuthException catch (e) {
+      print(e.message);
       return e.message;
     }
   }

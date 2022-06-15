@@ -13,6 +13,7 @@ class RegisterComponent extends StatefulWidget {
 }
 
 class _RegisterComponentState extends State<RegisterComponent> {
+  final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isPasswordVisible = true;
@@ -28,6 +29,33 @@ class _RegisterComponentState extends State<RegisterComponent> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        TextField(
+          controller: usernameController,
+          decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(),
+              hintText: 'Enter your username',
+              hintStyle: TextStyle(color: Colors.brown[200], fontSize: 15),
+              filled: true,
+              fillColor: AppColor.lightColor,
+              prefixIcon: Icon(
+                Icons.person_rounded,
+                color: AppColor.darkLightColor,
+                size: 20,
+              ),
+              suffixIcon: usernameController.text.isEmpty
+                  ? Container(width: 0)
+                  : IconButton(
+                      icon: Icon(Icons.close,
+                          color: AppColor.darkLightColor, size: 20),
+                      onPressed: () => usernameController.clear(),
+                    ),
+              border: OutlineInputBorder(),
+              contentPadding: EdgeInsets.all(20)),
+          style: TextStyle(color: AppColor.darkLightColor, fontSize: 15),
+          cursorColor: AppColor.darkLightColor,
+          textInputAction: TextInputAction.done,
+        ),
+        SizedBox(height: 20),
         TextField(
           controller: emailController,
           decoration: InputDecoration(
@@ -128,7 +156,8 @@ class _RegisterComponentState extends State<RegisterComponent> {
                 onPressed: () {
                   context.read<AuthenticationService>().signUp(
                     email: emailController.text, 
-                    password: passwordController.text
+                    password: passwordController.text,
+                    displayName: usernameController.text
                   );
                   Navigator.push(
                       context,
@@ -143,7 +172,7 @@ class _RegisterComponentState extends State<RegisterComponent> {
                 ))
           ],
         ),
-        SizedBox(height: 50),
+        SizedBox(height: 20),
         Divider(
           height: 20,
           thickness: 1,

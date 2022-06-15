@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/register/register.dart';
 import 'package:coffee_app/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -129,8 +132,8 @@ class _LoginComponentState extends State<LoginComponent> {
                 )),
                 backgroundColor: MaterialStateProperty.all(AppColor.lightBrownColor)
               ),
-              onPressed: () {
-                context.read<AuthenticationService>().signIn(
+              onPressed: () async{
+                await context.read<AuthenticationService>().signIn(
                   email: emailController.text, 
                   password: passwordController.text
                 );

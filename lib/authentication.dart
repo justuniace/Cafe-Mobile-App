@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/components/colors.dart';
+import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/login/login.dart';
 import 'package:coffee_app/screens/main/mainPage.dart';
 import 'package:coffee_app/screens/register/register.dart';
@@ -25,8 +27,6 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
   Widget build(BuildContext context) {
 
     final firebaseUser = context.watch<User?>();
-
-    print(firebaseUser?.uid);
 
     if(firebaseUser != null){
       return MainPage();
