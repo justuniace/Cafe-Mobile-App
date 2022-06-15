@@ -26,23 +26,22 @@ class _AdditionalComponentsState extends State<AdditionalComponents> {
 
   @override
   Widget build(BuildContext context) {
-
     final firebaseUser = context.watch<User?>();
 
     Future createUser() async {
-    final docUser = FirebaseFirestore.instance.collection('users');
+      final docUser = FirebaseFirestore.instance.collection('users');
 
-    final userInfo = {
-      'firstName' : firstnameController.text,
-      'lastName' : lastnameController.text,
-      'age' : ageController.text,
-      'contactNumber' : contactNumberController.text,
-      'birthDate' : birthDateController.text,
-      'address' : addressController.text
-    };
+      final userInfo = {
+        'firstName': firstnameController.text,
+        'lastName': lastnameController.text,
+        'age': ageController.text,
+        'contactNumber': contactNumberController.text,
+        'birthDate': birthDateController.text,
+        'address': addressController.text
+      };
 
-    await docUser.doc(firebaseUser?.uid).update(userInfo);
-  }
+      await docUser.doc(firebaseUser?.uid).update(userInfo);
+    }
 
     return Column(
       children: [
@@ -105,7 +104,6 @@ class _AdditionalComponentsState extends State<AdditionalComponents> {
                   print(pickedDate);
                   String formattedDate =
                       DateFormat("MM/dd/yyyy").format(pickedDate);
-                  print(formattedDate);
 
                   setState(() {
                     birthDateController.text = formattedDate;
@@ -141,12 +139,8 @@ class _AdditionalComponentsState extends State<AdditionalComponents> {
                           MaterialStateProperty.all(AppColor.darkColor)),
                   onPressed: () {
                     createUser();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MainPage()
-                        )
-                      );
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MainPage()));
                   },
                   child: Text(
                     "Register",

@@ -95,7 +95,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
             ),
           ),
         ]),
-        SizedBox(height: 45),
+        SizedBox(height: 30),
         SizedBox(
           child: Align(
             alignment: Alignment.center,
