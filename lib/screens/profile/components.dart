@@ -3,6 +3,7 @@ import 'package:coffee_app/provider/userProvider.dart';
 import 'package:coffee_app/screens/profile/aboutUs/about.dart';
 import 'package:coffee_app/screens/profile/account/account.dart';
 import 'package:coffee_app/screens/profile/editProfile/edit.dart';
+import 'package:coffee_app/screens/profile/helpCenter/help.dart';
 import 'package:coffee_app/screens/profile/privacy/privacy.dart';
 import 'package:coffee_app/screens/profile/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +22,6 @@ class ProfileComponents extends StatefulWidget {
 class _ProfileComponentsState extends State<ProfileComponents> {
   @override
   Widget build(BuildContext context) {
-
     print('Profile');
     print(context.read<CurrentUser>().currentUser);
 
@@ -224,7 +224,10 @@ class _ProfileComponentsState extends State<ProfileComponents> {
           child: Align(
             alignment: Alignment.center,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => helpCenter()));
+              },
               style: TextButton.styleFrom(
                 fixedSize: Size.fromWidth(330),
                 padding: EdgeInsets.all(29),
