@@ -13,10 +13,8 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColor.lightBrownColor,
       appBar: AppBar(
@@ -27,7 +25,9 @@ class _ProfileState extends State<Profile> {
           child: IconButton(
             icon: Icon(Icons.arrow_back),
             color: AppColor.lightBrownColor,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/main');
+            },
           ),
         ),
         actions: [

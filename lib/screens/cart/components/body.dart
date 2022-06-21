@@ -1,6 +1,6 @@
 import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/screens/cart/components/cart_item_card.dart';
-import 'package:coffee_app/screens/product/product_model.dart';
+import 'package:coffee_app/model/product_model.dart';
 import 'package:coffee_app/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -1,8 +1,9 @@
 import 'package:coffee_app/components/boxGradient.dart';
-import 'package:coffee_app/screens/home/components/random_products.dart';
-import 'package:coffee_app/screens/home/topNavButton.dart';
+import 'package:coffee_app/screens/home/Espresso/topNavExpresso.dart';
 import 'package:coffee_app/size_config.dart';
 import 'package:flutter/material.dart';
+
+import 'Espresso/expresso.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,13 +30,15 @@ class _HomeState extends State<Home> {
             ),
             Container(
               decoration: BoxGradient.SecondaryGradient(),
-              height: 560,
+              height: 500,
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Column(
                 children: [
                   TopNavButton(),
-                  ProductPreview(),
+                  Expresso(),
+
+                  // ProductPreview(),
                 ],
               ),
             ),
