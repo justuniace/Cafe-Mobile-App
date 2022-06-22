@@ -19,10 +19,8 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<AnimationLoading>(
-        create: (_) => AnimationLoading()
-      ),
-      ChangeNotifierProvider<CurrentUser>(
-        create: (_) => CurrentUser()),
+          create: (_) => AnimationLoading()),
+      ChangeNotifierProvider<CurrentUser>(create: (_) => CurrentUser()),
       Provider<AuthenticationService>(
         create: (_) => AuthenticationService(FirebaseAuth.instance),
       ),
@@ -43,7 +41,7 @@ void main() async {
       ),
       title: 'CupFé',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/welcome',
       routes: {
         '/': (context) => const AuthenticationWrapper(),
         '/main': (context) => const MainPage(),
