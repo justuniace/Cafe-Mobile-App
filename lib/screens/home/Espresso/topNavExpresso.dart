@@ -36,10 +36,7 @@ class _TopNavButtonState extends State<TopNavButton> {
               height: double.infinity,
               width: 150,
               child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Home()));
-                  },
+                  onPressed: () {},
                   child: Text('EXPRESSO'),
                   style: Button.ExpressoNav()),
             ),
@@ -47,10 +44,7 @@ class _TopNavButtonState extends State<TopNavButton> {
               height: double.infinity,
               width: 150,
               child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Iced()));
-                  },
+                  onPressed: () {},
                   child: Text('ICED'),
                   style: Button.IcedNav()),
             ),

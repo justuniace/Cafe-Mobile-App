@@ -1,104 +1,169 @@
-import 'package:coffee_app/components/colors.dart';
-import 'package:coffee_app/screens/cart/components/body.dart';
-import 'package:coffee_app/model/product_model.dart';
-import 'package:coffee_app/size_config.dart';
 import 'package:flutter/material.dart';
 
-class Cart extends StatelessWidget {
-  const Cart({Key? key}) : super(key: key);
+import '../../components/boxGradient.dart';
+import '../../components/colors.dart';
+
+class Cart extends StatefulWidget {
+  Cart({Key? key}) : super(key: key);
 
   @override
+  State<Cart> createState() => _CartState();
+}
+
+class _CartState extends State<Cart> {
+  @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
-      appBar: buildAppBar(context),
-      body: Body(),
-      bottomNavigationBar: CheckOurCard(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(55),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: AppColor.lightColor,
+          elevation: 0,
+          title: Container(
+            margin: EdgeInsets.only(top: 20),
+            child: Text(
+              "Cart",
+              style: TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: AppColor.darkColor,
+              ),
+            ),
+          ),
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        decoration: BoxGradient.PrimaryGradient(),
+        child: ListView(
+          children: [
+            Tile(
+                'images/home/coffee1.png',
+                'Name',
+                "Kape kayo dyan, Kape, Kape, Kape, kape, Kape, Kape, oy kape, edi wag",
+                '\$123'),
+          ],
+        ),
+      ),
+      floatingActionButton: button(),
     );
   }
 
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: AppColor.darkLightColor,
-      centerTitle: true,
-      title: Column(
+  Widget Tile(String image, String name, String description, String price) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+      height: 120,
+      decoration: BoxDecoration(
+        color: AppColor.lightBrownColor,
+        borderRadius: BorderRadius.circular(20.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0.0, 1.0),
+            blurRadius: 6.0,
+          ),
+        ],
+      ),
+      child: Stack(
+        clipBehavior: Clip.none,
         children: [
-          Text(
-            "CupFé Cart",
-            style: TextStyle(
-              color: AppColor.lightColor,
+          Row(
+            children: [
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15, left: 10),
+                    child: Image.asset(image),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 121, top: 27),
+                    child: Text(
+                      name,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w900,
+                        color: AppColor.darkColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 252, top: 20),
+                    child: Text(
+                      price,
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.darkColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 60, left: 120),
+                    child: SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: Text(
+                        description,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColor.darkLightColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Positioned(
+            right: -12,
+            bottom: 90,
+            child: Container(
+              height: 35,
+              width: 38,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  width: 4,
+                  color: AppColor.lightBrownColor,
+                ),
+                color: AppColor.darkLightColor,
+              ),
+              child: GestureDetector(
+                onTap: () {},
+                child: Icon(
+                  Icons.horizontal_rule_rounded,
+                  color: AppColor.lightBrownColor,
+                ),
+              ),
             ),
           ),
         ],
       ),
     );
   }
-}
 
-class CheckOurCard extends StatelessWidget {
-  const CheckOurCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    SizeConfig().init(context);
+  Widget button() {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: getProportionateScreenWidth(15),
-        horizontal: getProportionateScreenWidth(30),
-      ),
-      //height: 174,
-      decoration: BoxDecoration(
-        color: AppColor.lightColor,
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, -15),
-            blurRadius: 20,
-            color: AppColor.lightBrownColor.withOpacity(0.15),
+      margin: EdgeInsets.only(left: 10, right: 16),
+      height: 50,
+      width: 320,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          primary: AppColor.darkLightColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
-      ),
-      child: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: getProportionateScreenHeight(20)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    text: "Total: ",
-                    children: [
-                      TextSpan(
-                        text: "\$337.15",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: getProportionateScreenWidth(150),
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: AppColor.darkColor,
-                    ),
-                    child: Text(
-                      'Place Order',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: AppColor.lightColor,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+        ),
+        child: Text(
+          "Place Order",
+          style: TextStyle(
+            fontSize: 18,
+            color: AppColor.lightBrownColor,
+          ),
         ),
       ),
     );

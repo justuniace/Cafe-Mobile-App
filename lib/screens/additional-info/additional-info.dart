@@ -2,7 +2,7 @@ import 'package:coffee_app/screens/additional-info/components.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/boxLogin-register.dart';
-import '../../components/boxTitleBar.dart';
+
 import '../../components/colors.dart';
 
 class registerAdditional extends StatefulWidget {
@@ -42,7 +42,7 @@ class _registerAdditionalState extends State<registerAdditional> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'PERSONAL INFORMATION', // ADDITIONAL INFORMATION?
+                              'PERSONAL INFORMATION',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 decoration: TextDecoration.none,
