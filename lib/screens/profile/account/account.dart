@@ -21,8 +21,7 @@ class _AccountState extends State<Account> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Profile()));
+            Navigator.pop(context, Profile());
           },
           color: AppColor.darkLightColor,
           icon: Icon(Icons.arrow_back),

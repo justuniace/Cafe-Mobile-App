@@ -1,4 +1,3 @@
-import 'package:coffee_app/screens/profile/editProfile/compo.dart';
 import 'package:coffee_app/screens/profile/editProfile/components.dart';
 import 'package:coffee_app/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +21,7 @@ class _editProfileState extends State<editProfile> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Profile()));
+            Navigator.pop(context, Profile());
           },
           color: AppColor.lightBrownColor,
           icon: Icon(Icons.arrow_back),

@@ -38,7 +38,7 @@ class _ExpressoState extends State<Expresso> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,9 +56,7 @@ class _ExpressoState extends State<Expresso> {
               )
             ],
           ),
-
           SizedBox(height: 15),
-
           Row(
             children: [
               Expanded(

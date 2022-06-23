@@ -28,8 +28,7 @@ class _PrivacyState extends State<Privacy> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Profile()));
+            Navigator.pop(context, Profile());
           },
           color: AppColor.lightBrownColor,
           icon: Icon(Icons.arrow_back),

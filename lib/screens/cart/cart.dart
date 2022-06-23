@@ -15,17 +15,24 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(55),
+        preferredSize: Size.fromHeight(65),
         child: AppBar(
-          automaticallyImplyLeading: false,
+          titleSpacing: 0,
+          leading: Container(
+            margin: EdgeInsets.only(top: 5),
+            child: Icon(
+              Icons.shopping_cart_outlined,
+              color: AppColor.darkColor,
+            ),
+          ),
           backgroundColor: AppColor.lightColor,
-          elevation: 0,
+          elevation: 1,
           title: Container(
-            margin: EdgeInsets.only(top: 20),
+            margin: EdgeInsets.only(top: 12),
             child: Text(
               "Cart",
               style: TextStyle(
-                fontSize: 35,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
                 color: AppColor.darkColor,
               ),
@@ -121,14 +128,10 @@ class _CartState extends State<Cart> {
             bottom: 90,
             child: Container(
               height: 35,
-              width: 38,
+              width: 35,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 4,
-                  color: AppColor.lightBrownColor,
-                ),
+                borderRadius: BorderRadius.circular(12),
                 color: AppColor.darkLightColor,
               ),
               child: GestureDetector(

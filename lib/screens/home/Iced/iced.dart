@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../components/boxGradient.dart';
-import '../../../components/colors.dart';
-
-import '../../../size_config.dart';
 import '../coffeeListTile.dart';
 
 class Iced extends StatefulWidget {
@@ -39,7 +34,7 @@ class _IcedState extends State<Iced> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,9 +52,7 @@ class _IcedState extends State<Iced> {
               )
             ],
           ),
-
           SizedBox(height: 15),
-
           Row(
             children: [
               Expanded(

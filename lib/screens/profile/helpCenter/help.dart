@@ -25,8 +25,7 @@ class _helpCenterState extends State<helpCenter> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Profile()));
+            Navigator.pop(context, Profile());
           },
           color: AppColor.lightBrownColor,
           icon: Icon(Icons.arrow_back),

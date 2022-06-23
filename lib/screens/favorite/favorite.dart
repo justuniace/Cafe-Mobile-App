@@ -14,22 +14,30 @@ class _FavoriteState extends State<Favorite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(65),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: AppColor.lightColor,
+          elevation: 1,
+          title: Container(
+            margin: EdgeInsets.only(left: 12, top: 12),
+            child: Text(
+              "Favorites",
+              style: TextStyle(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+                color: AppColor.darkColor,
+              ),
+            ),
+          ),
+        ),
+      ),
       body: Container(
         width: double.infinity,
         decoration: BoxGradient.PrimaryGradient(),
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 40, left: 30, bottom: 10),
-              child: Text(
-                "Favorites",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.darkColor,
-                ),
-              ),
-            ),
             Tile(
                 'images/home/coffee1.png',
                 'Name',
@@ -109,17 +117,13 @@ class _FavoriteState extends State<Favorite> {
           ),
           Positioned(
             right: -12,
-            bottom: 80,
+            bottom: 90,
             child: Container(
               height: 35,
-              width: 38,
+              width: 35,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  width: 4,
-                  color: AppColor.lightBrownColor,
-                ),
+                borderRadius: BorderRadius.circular(12),
                 color: AppColor.darkLightColor,
               ),
               child: GestureDetector(
