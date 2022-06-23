@@ -1,7 +1,7 @@
 import 'package:coffee_app/components/colors.dart';
 import 'package:coffee_app/screens/home/Espresso/expresso.dart';
 import 'package:coffee_app/screens/home/Iced/iced.dart';
-import 'package:coffee_app/screens/home/home.dart';
+
 import 'package:flutter/material.dart';
 import 'package:coffee_app/components/button.dart';
 
@@ -38,7 +38,8 @@ class _TopNavButtonState extends State<TopNavButton> {
               child: TextButton(
                   onPressed: () {},
                   child: Text('EXPRESSO'),
-                  style: Button.ExpressoNav()),
+                  style: Button.ExpressoNav(
+                      AppColor.lightColor, AppColor.darkColor)),
             ),
             SizedBox(
               height: double.infinity,
@@ -46,7 +47,8 @@ class _TopNavButtonState extends State<TopNavButton> {
               child: TextButton(
                   onPressed: () {},
                   child: Text('ICED'),
-                  style: Button.IcedNav()),
+                  style: Button.IcedNav(
+                      AppColor.lightBrownColor, AppColor.lightColor)),
             ),
           ],
         ));

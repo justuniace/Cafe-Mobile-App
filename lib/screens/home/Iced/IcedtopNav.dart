@@ -38,7 +38,8 @@ class _TopNavButtonState extends State<TopNavButton> {
               child: TextButton(
                   onPressed: () {},
                   child: Text('EXPRESSO'),
-                  style: Button.IcedNav()),
+                  style: Button.IcedNav(
+                      AppColor.lightBrownColor, AppColor.lightColor)),
             ),
             SizedBox(
               height: double.infinity,
@@ -46,7 +47,8 @@ class _TopNavButtonState extends State<TopNavButton> {
               child: TextButton(
                   onPressed: () {},
                   child: Text('ICED'),
-                  style: Button.ExpressoNav()),
+                  style: Button.ExpressoNav(
+                      AppColor.lightColor, AppColor.darkColor)),
             ),
           ],
         ));

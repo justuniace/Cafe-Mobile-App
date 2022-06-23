@@ -23,7 +23,8 @@ class _ProfileComponentsState extends State<ProfileComponents> {
   @override
   Widget build(BuildContext context) {
     print('Profile');
-    print(context.read<CurrentUser>().currentUser);
+    print(context.watch<User?>());
+    final username = context.watch<User?>()?.displayName;
 
     return Column(
       children: [
@@ -67,7 +68,7 @@ class _ProfileComponentsState extends State<ProfileComponents> {
                       padding: const EdgeInsets.fromLTRB(115, 60, 0, 0),
                       child: SizedBox(
                         child: Text(
-                          'Username',
+                          '$username',
                           style: TextStyle(
                             color: AppColor.lightColor,
                             fontFamily: "Helevetica",

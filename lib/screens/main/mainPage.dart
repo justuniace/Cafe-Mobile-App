@@ -22,7 +22,6 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     final currentUser = context.read<User?>()?.uid;
-    
 
     initializeUser() async {
       await FirebaseFirestore.instance.collection('users')

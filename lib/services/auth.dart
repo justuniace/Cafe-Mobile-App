@@ -25,6 +25,10 @@ class AuthenticationService {
   }
 
   Future<String?> signUp({ required String? email, required String? password, required String? displayName }) async {
+    print(email);
+    print(password);
+    print(displayName);
+
     final db = FirebaseFirestore.instance.collection('users');
 
     try {
@@ -32,7 +36,7 @@ class AuthenticationService {
       .then((cred)async{
         await cred.user?.updateDisplayName(displayName);
         await db.doc(cred.user?.uid).set({
-          'username': cred.user?.displayName,
+          'username': displayName,
           'email': cred.user?.email
         });
       });
