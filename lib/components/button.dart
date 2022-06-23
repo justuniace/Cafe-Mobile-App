@@ -16,10 +16,10 @@ class Button {
     );
   }
 
-  static ButtonStyle ExpressoNav() {
+  static ButtonStyle ExpressoNav(Color bgColor, Color fgColor) {
     return ButtonStyle(
-      backgroundColor: MaterialStateProperty.all(AppColor.lightColor),
-      foregroundColor: MaterialStateProperty.all(AppColor.darkLightColor),
+      backgroundColor: MaterialStateProperty.all(bgColor),
+      foregroundColor: MaterialStateProperty.all(fgColor),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.horizontal(
@@ -31,10 +31,10 @@ class Button {
     );
   }
   
-  static ButtonStyle IcedNav() {
+  static ButtonStyle IcedNav(Color bgColor, Color fgColor) {
     return ButtonStyle(
-      //backgroundColor: MaterialStateProperty.all(AppColor.lightColor),
-      foregroundColor: MaterialStateProperty.all(AppColor.lightColor),
+      backgroundColor: MaterialStateProperty.all(bgColor),
+      foregroundColor: MaterialStateProperty.all(fgColor),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.horizontal(
